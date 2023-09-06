@@ -8,8 +8,13 @@ const chat = document.querySelector('.chat');
 
 sendBtn.addEventListener('click', (e)=>{
     const textMsg = inp.value;
+    if(textMsg==''){
+        return
+    }
+    else{
     inp.value = '';
     socket.emit('send-msg', {msg:textMsg});
+    }
 });
 
 socket.on('received-msg', (data)=>{
